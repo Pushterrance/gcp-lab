@@ -41,6 +41,9 @@ resource "google_compute_instance" "lab_vm" {
     }
     network_interface{
         network ="default"
+        access_config {
+          
+        }
     }
     metadata = {
         "ssh-keys" = "${var.vm_user}:${var.ssh_public_key}"
