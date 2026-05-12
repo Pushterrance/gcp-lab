@@ -18,9 +18,17 @@ services:
     container_name: grafana
     environment:
       - "GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}"
-      - "GF_SECURITY_COOKIE_SAMESITE=disabled"
     ports:
       - "3000:3000"
     depends_on:
       - prometheus
 
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - grafana
