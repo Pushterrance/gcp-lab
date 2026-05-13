@@ -63,3 +63,10 @@ resource "google_compute_instance" "lab_vm" {
       "purpose" = "observability-lab"
     }
 }
+
+resource "google_redis_instance" "cache" {
+    name = "lab-redis"
+    tier ="BASIC"
+    memory_size_gb = 1
+    region = "asia-northeast1"
+}
