@@ -18,5 +18,5 @@ func main() {
 		rdb.Set(ctx, key, "value", 0)
 	}
 
-	fmt.PrintIn("Seeded 10 keys")
+	fmt.Println("Seeded 10 keys")
 }
