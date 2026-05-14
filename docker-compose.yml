@@ -13,6 +13,16 @@ services:
     ports:
       - "9100:9100"
 
+  redis-exporter:
+    image: oliver006/redis_exporter:latest
+    container_name: redis-exporter
+    environment:
+      - REDIS_ADDR=redis://${REDIS_IP}:6379
+    ports:
+      - "9121:9121"
+    depends_on:
+      - prometheus
+
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
