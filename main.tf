@@ -52,7 +52,7 @@ resource "google_compute_instance" "lab_vm" {
     metadata_startup_script = <<-EOF
     #!/bin/bash
     apt-get update -y
-    apt-get install -y docker.io docker-compose-v2
+    apt-get install -y docker.io docker-compose-v2 golang
     systemctl enable docker
     systemctl start docker
     EOF
