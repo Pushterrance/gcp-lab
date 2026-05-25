@@ -70,3 +70,20 @@ resource "google_redis_instance" "cache" {
     memory_size_gb = 1
     region = "asia-northeast1"
 }
+
+resource "google_storage_bucket" "tf_state" {
+  name     = "${var.project_id}-tf-state"
+  location = "ASIA-NORTHEAST1"
+
+  storage_class               = "STANDARD"
+  uniform_bucket_level_access = true
+  public_access_prevention    = "enforced"
+
+  versioning {
+    enabled = true
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
